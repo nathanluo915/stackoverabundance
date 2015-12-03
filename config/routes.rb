@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
+  resources :questions, only:[:index, :show, :create] do
+    resources :answers, only:[:index]
+  end
+  root "questions#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,9 +1,23 @@
 <div class="question-field">
+  <div class="score-block">
 
+  </div>
+
+  <div class="question-content">
   <%= @question.content %>
+  </div>
+  <div class="question-user">
+  <%= @question.user.username %>
+  </div>
+  <div>
 
+  </div>
 </div>
 
 <div class="answer-list">
+  <%= @question.answers.each do |answer| %>
+  <div class="answer-block">
 
+  </div>
+  <% end %>
 </div>
