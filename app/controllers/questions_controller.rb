@@ -1,5 +1,8 @@
 class QuestionsController < ApplicationController
   def index
+  end
+
+  def list
     if params[:selection] == "1" || params[:selection] == nil
       @questions = Question.get_questions_by_newest
     elsif params[:selection] == "2"
@@ -7,6 +10,7 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.get_questions_by_highest_voted
     end
+    render partial: 'questions', locals:{questions: @questions}
   end
 
   def show

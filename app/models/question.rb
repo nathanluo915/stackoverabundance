@@ -14,7 +14,7 @@ def self.get_questions_by_newest
 end
 
 def self.get_questions_by_highest_voted
-  all.sort_by { |question| question.total_votes }.reverse
+  all.sort_by { |question| question.total_votes }.reverse[0..19]
 end
 
 # def get_votes_count

@@ -1,0 +1,9 @@
+<% questions.each do |q| %>
+  <div class="index-content-item"><div class="index-content-left-side"><ul><li><%= q.total_votes %><br>votes</li><li><%= q.get_answers_count %><br>answers</li></ul>
+  </div>
+  <div class="index-content-right-side">
+    <%= link_to q.title, question_path(q) %>
+    <p>modified <%= q.get_modified_time %> <%= link_to q.user.username, user_path(q.user) %></p>
+  </div>
+</div>
+  <% end %>
