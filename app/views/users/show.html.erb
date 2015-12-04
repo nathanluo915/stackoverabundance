@@ -1,21 +1,29 @@
 <h1> <%= @user.username %> </h1>
 
-<% if current_user %>
+<% if current_user.id == @user.id %>
   <%= link_to 'Edit profile', edit_user_path(@user) %>
 <% end %>
 
 
 <h3> Questions </h3>
-<div class = "user-questions">
   <% @user.questions.each do |question| %>
+  <div class = "user-questions">
     <%= link_to question.title, question_path(question.id) %>
+  </div>
   <% end %>
-</div>
 
 
 <h3> Answers </h3>
-<div class = "user-answers">
   <% @user.answers.each do |answer| %>
-    <%= truncate(answer.content, :length => 140, separator: ' '){ link_to "Continue", question_path(answer.question.id)} %>
+  <div class = "user-answers">
+    <%= truncate(answer.content, :length => 30, separator: ' '){ link_to "Continue", question_path(answer.question.id)} %>
+  <div>
   <% end %>
-<div>
+
+<h3> Comments </h3>
+  <% @user.comments.each do |comment| %>
+  <div class = "user-comments">
+    <%= comment.content %>
+  <div>
+  <% end %>
+
