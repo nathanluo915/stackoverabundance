@@ -1,3 +1,11 @@
+<% if @user.errors.any?  %>
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <h1> Sign up for Stack Overabundance! </h1>
 
 <%= form_for @user do |f| %>
@@ -21,3 +29,5 @@
   <%= f.submit %>
 </div>
 <% end %>
+
+<p> Already have an account? <%= link_to 'Sign in', login_path %>
