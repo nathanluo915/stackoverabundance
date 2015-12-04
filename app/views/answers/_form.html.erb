@@ -1,4 +1,4 @@
-<div id="answer-form"></div>
+<div id="answer-form">
   <h3>Answer: </h3>
   <%= form_for [@question, @answer], id: "new-answer-form" do |f|%>
     <%= f.hidden_field :user_id, value: current_user.id %>
@@ -10,4 +10,5 @@
       <%= f.submit %>
     </div>
   <% end %>
+</div>
 </div>
