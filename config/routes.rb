@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
-  resources :questions, only:[:index, :show, :create] do
+  resources :questions do
     resources :answers, only:[:index]
   end
   root "questions#index"
