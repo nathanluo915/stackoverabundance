@@ -8,7 +8,7 @@
 </div>
 <div class="index-content">
   <% @questions.each do |q| %>
-  <div class="index-content-item"><div class="index-content-left-side"><ul><li><%= q.get_votes_count %><br>votes</li><li><%= q.get_answers_count %><br>answers</li></ul>
+  <div class="index-content-item"><div class="index-content-left-side"><ul><li><%= q.total_votes %><br>votes</li><li><%= q.get_answers_count %><br>answers</li></ul>
   </div>
   <div class="index-content-right-side">
     <%= link_to q.title, question_path(q) %>
