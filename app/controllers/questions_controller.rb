@@ -11,4 +11,10 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.new
   end
 
+  def upvote
+    @new_upvote = self.votes.build(user: current_user, upvote: true)
+    if @new_upvote.save
+      render partial: 'vote'
+    end
+  end
 end
