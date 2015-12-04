@@ -1,3 +1,4 @@
+<div>
 <div class="question-field">
   <div class="score-block">
 
@@ -20,6 +21,7 @@
 
 <div class="answer-form">
   <% if current_user %>
-    <%= link_to "Answer the Question", new_question_answer_path(@question) %>
+    <%= link_to "Answer the Question", new_question_answer_path(@question), id: "post-answer" %>
   <% end %>
+</div>
 </div>
