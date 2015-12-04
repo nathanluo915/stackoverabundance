@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new
     if request.xhr?
       binding.pry
-      render partial: 'new'
+      render partial: 'form'
     end
   end
 
