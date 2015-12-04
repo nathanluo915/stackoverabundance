@@ -12,6 +12,8 @@
     <%= answer.user.username %>
   </div>
 
-  <%= render answer.comments %>
-
+  <div class="comment-block">
+    <%= render answer.comments %>
+    <%= link_to "Add Comment", new_ %>
+  </div>
 </div>
