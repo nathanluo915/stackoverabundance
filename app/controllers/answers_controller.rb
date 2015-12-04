@@ -3,7 +3,6 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.new
     if request.xhr?
-      binding.pry
       render partial: 'form'
     end
   end
