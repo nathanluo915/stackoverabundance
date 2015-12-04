@@ -1,4 +1,9 @@
 <div class="answer-block">
+
+  <div class="score-block">
+    <%= render partial: 'votes/vote', locals: { votable: answer } %>
+  </div>
+
   <h3>Answer: </h3>
   <div>
   <%= answer.content %>

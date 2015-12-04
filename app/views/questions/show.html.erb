@@ -1,7 +1,7 @@
 <div>
 <div class="question-field">
   <div class="score-block">
-
+    <%= render partial: 'votes/vote', locals: { votable: @question } %>
   </div>
 
   <div class="question-content">
