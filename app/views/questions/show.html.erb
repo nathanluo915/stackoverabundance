@@ -15,21 +15,11 @@
 </div>
 
 <div class="answer-list">
-  <% @question.answers.each do |answer| %>
-  <div class="answer-block">
-    <div>
-    <%= answer.content %>
-    </div>
-    <div>
-      <%= answer.user.username %>
-    </div>
-    <div class="comment-block">
-      <% answer.comments.each do |comment| %>
-        <div>
-          <%= comment.content %> | <%= comment.user.username %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render @question.answers %>
+</div>
+
+<div class="answer-form">
+  <% if current_user %>
+    <%= link_to "Answer the Question", new_question_answer_path(@question) %>
   <% end %>
 </div>
