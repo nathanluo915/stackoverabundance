@@ -1,4 +1,9 @@
 <div class="comment-block">
+
+  <div class="score-block">
+    <%= render partial: 'votes/vote', locals: { votable: comment } %>
+  </div>
+
   <div>
     <h5>Comment: </h5>
     <%= comment.content %> | <%= comment.user.username %>

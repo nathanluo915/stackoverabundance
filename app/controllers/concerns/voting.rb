@@ -1,6 +1,6 @@
 module Voting
   def total_votes
-    self.upvotes - self.downvotes
+    (self.upvotes - self.downvotes).to_s
   end
 
   def upvotes

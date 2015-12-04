@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
   has_many  :answers
   has_many  :comments
   has_many  :votes
+
+  def voted_for?(votable)
+    Vote.where(votable: votable, user: self).count > 0
+  end
+
+  def upvoted?(votable)
+    Vote.find_by(votable: votable, user: self).upvote if self.voted_for?(votable)
+  end
 end
