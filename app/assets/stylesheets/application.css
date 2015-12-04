@@ -56,3 +56,14 @@
   padding: .4em;
   background-color: #aaaaaa;
 }
+
+.question-field {
+  border: 1px solid black;
+  margin: 1em;
+}
+.answer-list {border: 1px solid black;}
+.answer-block {
+  border: 1px solid green;
+  margin: 1em;
+}
+.comment-block {border: 1px solid blue;}
