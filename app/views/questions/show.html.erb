@@ -33,3 +33,14 @@
   </div>
   <% end %>
 </div>
+
+<% if current_user %>
+  <%= form_tag "/questions/#{@question.id}/answers", id: "new-answer-form" do %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <div>
+      <%= label_tag :content %>
+      <%= text_field_tag :content%>
+    </div>
+
+  <% end %>
+<% end %>
