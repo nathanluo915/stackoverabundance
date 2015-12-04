@@ -16,7 +16,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    user_id = current_user.id
+    @user = User.find(user_id)
+
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
 
