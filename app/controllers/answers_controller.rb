@@ -1,4 +1,13 @@
 class AnswersController < ApplicationController
+  def new
+    @question = Question.find(params[:question_id])
+    @answer = Answer.new
+    if request.xhr?
+      binding.pry
+      render partial: 'new'
+    end
+  end
+
   def create
     @question = Question.find(params[:question_id])
     answer = @question.answers.build(answer_build_params)

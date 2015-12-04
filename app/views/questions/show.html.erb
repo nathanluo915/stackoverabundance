@@ -15,37 +15,11 @@
 </div>
 
 <div class="answer-list">
-  <% @question.answers.each do |answer| %>
-  <div class="answer-block">
-    <div>
-    <%= answer.content %>
-    </div>
-    <div>
-      <%= answer.user.username %>
-    </div>
-    <div class="comment-block">
-      <% answer.comments.each do |comment| %>
-        <div>
-          <%= comment.content %> | <%= comment.user.username %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
+  <%= render @question.answers %>
 </div>
 
 <div class="answer-form">
-<% if current_user %>
-  <%= form_tag "/questions/#{@question.id}/answers", id: "new-answer-form" do %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
-    <div>
-      <%= label_tag :content %>
-      <%= text_area_tag :content, nil, rows: 10, cols: 100 %>
-    </div>
-    <div>
-      <%= submit_tag("Answer") %>
-    </div>
+  <% if current_user %>
+    <%= link_to "Answer the Question", new_question_answer_path(@question) %>
   <% end %>
-
-<% end %>
 </div>
