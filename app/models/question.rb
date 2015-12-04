@@ -13,8 +13,8 @@ def self.get_questions_by_newest
   order(created_at: :desc).limit(20)
 end
 
-def get_questions_by_
-
+def self.get_questions_by_highest_voted
+  all.sort_by { |question| question.total_votes }.reverse
 end
 
 # def get_votes_count

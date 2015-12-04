@@ -1,8 +1,8 @@
 <div class="index-nav-bar"><span class="float-left" id="current-content-on-index">Most recent questions</span><span class="float-right">
 <ul>
-  <li><%= link_to "most recent", "/" %></li>
-  <li><%= link_to "highest-voted", "/" %></li>
-  <li><%= link_to "trending", "/" %></li>
+  <li><%= link_to "most recent", questions_path(selection: 1) %></li>
+  <li><%= link_to "highest-voted", questions_path(selection: 2) %></li>
+  <li><%= link_to "trending", questions_path(selection: 3) %></li>
 </ul>
 </span>
 </div>
