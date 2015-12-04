@@ -6,6 +6,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <h1 class="main-header"><%=link_to "StackOverabundance", root_path%><span class="main-nav-bar"><ul><li><%= link_to "Ask Question", new_question_path %></li></ul>
  <% if logged_in? %>
   <ul><li><%= link_to 'Logout', logout_path %></li></ul>
@@ -14,8 +15,10 @@
   <ul><li><%= link_to 'Sign up', signup_path %></li></ul></span></h1>
 <% end %>
 
-
 <%= yield %>
+  
+
+ 
 
 
 
