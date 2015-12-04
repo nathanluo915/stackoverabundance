@@ -1,1 +1,21 @@
 <h1> <%= @user.username %> </h1>
+
+<% if current_user %>
+  <%= link_to 'Edit profile', edit_user_path(@user) %>
+<% end %>
+
+
+<h3> Questions </h3>
+<div class = "user-questions">
+  <% @user.questions.each do |question| %>
+    <%= link_to question.title, question_path(question.id) %>
+  <% end %>
+</div>
+
+
+<h3> Answers </h3>
+<div class = "user-answers">
+  <% @user.answers.each do |answer| %>
+    <%= truncate(answer.content, :length => 140, separator: ' '){ link_to "Continue", question_path(answer.question.id)} %>
+  <% end %>
+<div>
