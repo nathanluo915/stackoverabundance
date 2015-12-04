@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
+  resource :sessions, only: [:create]
+  resource :users, only: [:create]
+
   resources :questions do
     resources :answers, only:[:index]
   end
