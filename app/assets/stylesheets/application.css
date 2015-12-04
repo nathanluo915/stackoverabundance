@@ -37,6 +37,33 @@
   border-bottom: none;
 }
 
+.index-content-left-side {
+  display: inline-block;
+}
+.index-content-left-side ul{
+  display: inline;
+  text-align: center;
+}
+
+.index-content-left-side li {
+  display: inline-block;
+  padding: 1em;
+}
+
+.index-content-item {
+  border-bottom: 1px solid #cccccc;
+
+}
+
+.index-content-right-side {
+  display: inline-block;
+  float: right;
+}
+
+.index-content-right-side p {
+  text-align: right;
+}
+
 .main-header a {
   color: initial;
   text-decoration: none;
