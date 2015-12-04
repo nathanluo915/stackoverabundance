@@ -12,7 +12,7 @@
   </div>
   <div class="index-content-right-side">
     <%= link_to q.title, question_path(q) %>
-    <p>test</p>
+    <p>modified <%= q.get_modified_time %> <%= link_to q.user.username, user_path(q.user) %></p>
   </div>
 </div>
   <% end %>

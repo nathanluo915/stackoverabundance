@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
   def create
    q = current_user.questions.new(strong_params)
    if q.save
-    redirect_to :index
+    redirect_to root_path
    else
     errors.add("Form not completed properly")
    end
