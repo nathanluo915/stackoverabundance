@@ -1,14 +1,31 @@
 <h1> <%= @user.username %> </h1>
 
+<div class = "user-links">
+  <%= link_to 'Website', normalize_url( @user.website ) if !@user.website.blank?%>
+  <%= link_to 'Twitter', normalize_url( @user.twitter ) if !@user.twitter.blank?%>
+  <%= link_to 'Github', normalize_url( @user.github ) if !@user.github.blank?%>
+</div>
+
+<div class = "user-about">
+<% if @user.about.blank?  %>
+ <p> This 'about me' is currently blank! <p>
+<% else %>
+  <p> <%= @user.about %>
+<% end %>
+<div>
+
+<div class = "user-edit-link">
 <% if current_user.id == @user.id %>
   <%= link_to 'Edit profile', edit_user_path(@user) %>
 <% end %>
+</div>
 
 
 <h3> Questions </h3>
   <% @user.questions.each do |question| %>
   <div class = "user-questions">
-    <%= link_to question.title, question_path(question.id) %>
+    <%= link_to question.title, question_path(question.id) %> |
+    <%= question.created_at.strftime("%B %d, %Y") %>
   </div>
   <% end %>
 
@@ -16,14 +33,17 @@
 <h3> Answers </h3>
   <% @user.answers.each do |answer| %>
   <div class = "user-answers">
-    <%= truncate(answer.content, :length => 30, separator: ' '){ link_to "Continue", question_path(answer.question.id)} %>
+    <%= truncate(answer.content, :length => 30, separator: ' '){ link_to "Continue", question_path(answer.question.id)} %> |
+    <%= answer.created_at.strftime("%B %d, %Y") %>
   <div>
   <% end %>
 
 <h3> Comments </h3>
   <% @user.comments.each do |comment| %>
   <div class = "user-comments">
-    <%= comment.content %>
+    <%= comment.content %> |
+    <%= comment.created_at.strftime("%B %d, %Y") %>
   <div>
   <% end %>
+
 

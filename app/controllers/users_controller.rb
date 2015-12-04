@@ -20,12 +20,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update_attributes(update_params)
+    redirect_to user_path(@user)
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
   end
 
 
@@ -33,5 +40,9 @@ class UsersController < ApplicationController
 
   def permit_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def update_params
+    params.require(:user).permit(:username, :email, :password, :about, :website, :twitter, :github)
   end
 end
