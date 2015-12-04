@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :users, only: [:create,:show,:edit,:update,:destroy]
 
   resources :questions do
+    collection do
+      get 'list'
+    end
     resources :answers, only:[:create, :new]
   end
 
