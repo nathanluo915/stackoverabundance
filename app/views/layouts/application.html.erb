@@ -11,6 +11,7 @@
   <span class="main-nav-bar">
   <ul>
     <% if logged_in? %>
+    <li><%= link_to current_user.username, user_path(current_user.id) %> </li>
     <li><%= link_to 'Logout', logout_path %></li>
     <li><%= link_to "Ask Question", new_question_path %></li>
     <% else %>
