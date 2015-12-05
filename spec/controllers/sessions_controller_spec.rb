@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  context "new" do
+  context "#new" do
     it "is successful" do
       get :new
       expect(response).to be_success

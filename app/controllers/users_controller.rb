@@ -6,12 +6,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(permit_params)
-    if @user.save 
+    if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
     else
       @user = @user.errors.full_messages
-      render :new
+      redirect_to signup_path
     end
   end
 
