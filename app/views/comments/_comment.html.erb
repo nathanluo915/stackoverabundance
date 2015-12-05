@@ -1,11 +1,10 @@
-<div class="comment-block">
+<div class="comment-block row">
 
-  <div class="score-block">
+  <div class="score-block large-1 columns">
     <%= render partial: 'votes/vote', locals: { votable: comment } %>
   </div>
 
-  <div>
-    <h5>Comment: </h5>
-    <%= comment.content %> | <%= comment.user.username %>
+  <div class="large-11 columns">
+    <p><%= comment.content %>  -- <span class="comment-username"><%= link_to comment.user.username, user_path(comment.user) %></span><span class="time"> <%= comment.created_at %> </span></p>
   </div>
 </div>

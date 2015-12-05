@@ -15,13 +15,13 @@ end
 
 puts "Create users"
 
-12.times do
+40.times do
   print '.'
   q = Question.create!(title: Faker::Lorem.sentence.sub(/\./, "?"), content: Faker::Lorem.paragraph, user: users.sample)
   Random.rand(3).times do
     com = Comment.create!(content: Faker::Lorem.sentence, user: users.sample, commentable: q)
   end
-  10.times do
+  Random.rand(10).times do
     print "+"
     ans = Answer.create!(content: Faker::Lorem.sentence, user: users.sample, question: q)
     Random.rand(10).times do

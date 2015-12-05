@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :answers, only:[:create, :new]
   end
+  resources :comments, only:[:new, :create]
 
   post 'questions/:id/votes' => 'votes#create', as: :question_votes
   post 'answers/:id/votes' => 'votes#create', as: :answer_votes

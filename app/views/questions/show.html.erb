@@ -1,27 +1,40 @@
-<div>
-<div class="question-field">
-  <div class="score-block">
-    <%= render partial: 'votes/vote', locals: { votable: @question } %>
+<div class="row">
+  <div class="question-field large-12 columns">
+    <div class="score-block large-1 columns">
+      <%= render partial: 'votes/vote', locals: { votable: @question } %>
+    </div>
+
+    <div class="large-11 columns">
+      <div>
+        <h3> <%= @question.title %></h3>
+      </div>
+      <div class="question-content">
+      <%= @question.content %>
+      </div>
+      <div class="question-user">
+      <%= link_to @question.user.username, user_path(@question.user) %>
+      </div>
+
+      <div class="comment-list">
+        <%= render @question.comments %>
+      </div>
+
+      <div class="comment-form-container">
+        <% if logged_in? %>
+        <a class="add-comment-button" href="#">Add Comment</a>
+        <%= render partial: "comments/form", locals: {commentable_class: "Question", commentable_id: @question.id} %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="question-content">
-  <%= @question.content %>
+  <div class="answer-list large-12 columns">
+    <%= render @question.answers %>
   </div>
-  <div class="question-user">
-  <%= @question.user.username %>
+
+  <div class="answer-form">
+    <% if current_user %>
+      <%= render partial: "answers/form", locals: {question: @question, answer: Answer.new} %>
+    <% end %>
   </div>
-  <div>
-
-  </div>
-</div>
-
-<div class="answer-list">
-  <%= render @question.answers %>
-</div>
-
-<div class="answer-form">
-  <% if current_user %>
-    <%= link_to "Answer the Question", new_question_answer_path(@question), id: "post-answer" %>
-  <% end %>
-</div>
 </div>

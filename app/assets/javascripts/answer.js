@@ -1,18 +1,31 @@
 $(document).ready(function(){
-  $("#post-answer").on("click", function(event){
+
+  var bindAddComment = function(event){
     event.preventDefault();
     var element = $(event.target);
     element.toggle();
+    element.next().toggle();
+
+  };
+
+  var bindCommentSubmit = function(event){
+    event.preventDefault();
+    var element = $(event.target);
+
     $.ajax({
-      method: "get",
-      url: element.attr("href")
+      method: "post",
+      url: element.attr("action"),
+      data: element.serialize()
     }).done(function(response){
-      $(".answer-form").append(response);
+      element.parent().parent().children(".comment-list").append(response);
+      element.find("textarea").val("");
+      element.toggle();
+      element.prev().toggle();
     }).fail(function(error){
       console.log(error);
     });
 
-  });
+  }
 
   $(".answer-form").on("submit", "form", function(event){
     event.preventDefault();
@@ -22,14 +35,17 @@ $(document).ready(function(){
       url: element.attr("action"),
       data: element.serialize()
     }).done(function(response){
-      debugger
-      element.parent().remove();
       $(".answer-list").append(response);
-      $("#post-answer").toggle();
+      $(".add-comment-button").on("click", bindAddComment);
+      $(".comment-form-container").on("submit", "form", bindCommentSubmit);
+      element.find("textarea").val("");
     }).fail(function(error){
       console.log(error);
     })
   })
 
+  $(".add-comment-button").on("click", bindAddComment);
+
+  $(".comment-form-container").on("submit", "form", bindCommentSubmit);
 
 });

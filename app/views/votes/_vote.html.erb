@@ -5,7 +5,7 @@
 
       <div>
       <%= form_for vote, url: "/votes/#{vote.id}", method: :delete, html:{class: :upvoted} do |f| %>
-        <%= image_submit_tag("upvoted.png", :class => "vote-arrow") %>
+        <%= image_submit_tag("upvoted.svg", :class => "vote-arrow") %>
       <% end %>
       </div>
       <div>
@@ -13,7 +13,7 @@
       </div>
       <div>
       <%= form_for vote, url: "/votes/#{vote.id}", method: :put, html:{class: :downvote} do |f| %>
-        <%= image_submit_tag("downvote.png", :class => "vote-arrow") %>
+        <%= image_submit_tag("downvote.svg", :class => "vote-arrow") %>
       <% end %>
       </div>
 
@@ -21,7 +21,7 @@
 
       <div>
       <%= form_for vote, url: "/votes/#{vote.id}", method: :put, html:{class: :upvote} do |f| %>
-        <%= image_submit_tag("upvote.png", :class => "vote-arrow") %>
+        <%= image_submit_tag("upvote.svg", :class => "vote-arrow") %>
       <% end %>
       </div>
       <div>
@@ -29,7 +29,7 @@
       </div>
       <div>
       <%= form_for vote, url: "/votes/#{vote.id}", method: :delete, html:{class: :downvoted} do |f| %>
-        <%= image_submit_tag("downvoted.png", :class => "vote-arrow") %>
+        <%= image_submit_tag("downvoted.svg", :class => "vote-arrow") %>
       <% end %>
       </div>
     <% end %>
@@ -41,7 +41,7 @@
     <%= f.hidden_field :votable_type, value: votable.class %>
     <%= f.hidden_field :votable_id, value: votable.id %>
     <%= f.hidden_field :upvote, value: true %>
-    <%= image_submit_tag("upvote.png", :class => "vote-arrow") %>
+    <%= image_submit_tag("upvote.svg", :class => "vote-arrow") %>
     <% end %>
     </div>
     <div>
@@ -53,7 +53,7 @@
     <%= f.hidden_field :votable_type, value: votable.class %>
     <%= f.hidden_field :votable_id, value: votable.id %>
     <%= f.hidden_field :upvote, value: false %>
-    <%= image_submit_tag("downvote.png", :class => "vote-arrow") %>
+    <%= image_submit_tag("downvote.svg", :class => "vote-arrow") %>
     <% end %>
     </div>
   <% end %>
