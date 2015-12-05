@@ -3,7 +3,10 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(permit_params)
     if @vote.save
-      render partial: 'vote', locals: {votable: @vote.votable}
+      respond_to do |format|
+        format.html { render partial: 'vote', locals: {votable: @vote.votable}, layout: false }
+        format.js { }
+      end
     else
       render text: "You've already voted"
     end
@@ -13,7 +16,10 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     @vote.upvote = !@vote.upvote
     if @vote.save
-      render partial: 'vote', locals: {votable: @vote.votable, vote: @vote}
+      respond_to do |format|
+        format.html { render partial: 'vote', locals: {votable: @vote.votable, vote: @vote}, layout: false }
+        format.js { }
+      end
     else
       render text: "You've already voted"
     end
@@ -22,7 +28,10 @@ class VotesController < ApplicationController
   def destroy
     @vote = Vote.find(params[:id])
     @vote.destroy
-    render partial: 'vote', locals: {votable: @vote.votable, vote: @vote}
+    respond_to do |format|
+      format.html { render partial: 'vote', locals: {votable: @vote.votable, vote: @vote}, layout: false }
+      format.js { }
+    end
   end
 
   private
