@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
 
   private
   def validate_empty_content
-    unless content && content.length > 0
+    unless content && content != ""
       errors.add(:content, "Content cannot be empty")
     end
   end
