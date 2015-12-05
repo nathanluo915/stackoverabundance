@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  context "Adding record" do
+  context "adding record" do
     it "sucess if all parameters are valid" do
       answer = FactoryGirl.create(:answer)
       expect(answer.persisted?).to eq(true)
@@ -23,7 +23,7 @@ RSpec.describe Answer, type: :model do
     end
   end
 
-  context "Association" do
+  context "association" do
     it "should return the user who created the answer" do
       user = FactoryGirl.create(:user)
       answer = FactoryGirl.create(:answer, user: user)
@@ -38,12 +38,12 @@ RSpec.describe Answer, type: :model do
 
     it "should return a collection of comments it has" do
       answer = FactoryGirl.create(:answer)
+      comments = []
       3.times do
         comments << FactoryGirl.create(:answer_comment, commentable: answer)
       end
-      3.times {FactoryGirl.create(:answer_comment, commentable: answer)}
-
-      expect(answer.comments).to eq(comments)
+      3.times {FactoryGirl.create(:answer_comment)}
+      expect(answer.comments.order(:id)).to eq(comments.sort_by{:id})
     end
   end
 

@@ -28,4 +28,25 @@ RSpec.describe Comment, type: :model do
     end
   end
 
+  context "association" do
+    it "should return the user who created the answer" do
+      user = FactoryGirl.create(:user)
+      comment = FactoryGirl.create(:answer_comment, user: user)
+      expect(comment.user).to eq(user)
+    end
+
+    it "should return the question it belongs to" do
+      question = FactoryGirl.create(:question)
+      comment = FactoryGirl.create(:question_comment, commentable: question)
+      expect(comment.commentable).to eq(question)
+    end
+
+    it "should return the answer it belongs to" do
+      answer = FactoryGirl.create(:answer)
+      comment = FactoryGirl.create(:answer_comment, commentable: answer)
+      expect(comment.commentable).to eq(answer)
+    end
+
+  end
+
 end
