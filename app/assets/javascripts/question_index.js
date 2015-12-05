@@ -8,7 +8,6 @@ $(document).ready(function() {
       url: $(this).attr("href"),
       dataType: "html"
     }).done(function(response) {
-      console.log(response);
       $(".index-content").html(response);
     }).fail(function() {
 
@@ -19,7 +18,16 @@ $(document).ready(function() {
 
   }); // $(".index-content-link").click(function()
 
+$.ajax({
+      url: "/questions/list?selection=1",
+      dataType: "html"
+    }).done(function(response) {
+      $(".index-content").html(response);
+    }).fail(function() {
 
+
+
+    });// $.ajax({
 
 
 

@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   def index
+    @questions = Question.get_questions_by_newest
   end
 
   def list
