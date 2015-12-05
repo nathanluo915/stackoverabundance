@@ -2,9 +2,7 @@ class AnswersController < ApplicationController
   def new
     @question = Question.find(params[:question_id])
     @answer = Answer.new
-    if request.xhr?
-      render partial: 'form'
-    end
+    render partial: 'form'
   end
 
   def create
