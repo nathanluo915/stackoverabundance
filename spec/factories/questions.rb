@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :question do
     title Faker::Lorem.sentence.sub(/\./, "?")
     content Faker::Lorem.paragraph
-    user
+    association :user, factory: :user
   end
-
 end

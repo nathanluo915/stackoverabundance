@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :answer do
     content Faker::Lorem.paragraph
-    user
-    question
+    association :user, factory: :user
+    association :question, factory: :question
   end
 end
