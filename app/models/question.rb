@@ -17,9 +17,9 @@ def self.get_questions_by_highest_voted
   all.sort_by { |question| question.total_votes }.reverse[0..19]
 end
 
-# def get_votes_count
-#     self.votes.where(upvote: true).count - self.votes.where(upvote: false).count
-# end
+def self.get_questions_by_trending
+  Vote.all.where("updated_at > ? AND votable_type = ?", 5.hours.ago, "Question").group("votable_id, id")
+end
 
 def get_answers_count
    if (self.answers)
