@@ -22,6 +22,7 @@
 <div class="answer-form">
   <% if current_user %>
     <%= link_to "Answer the Question", new_question_answer_path(@question), id: "post-answer" %>
+    <%= render partial: "answers/form", locals: {question: @question, answer: Answer.new} %>
   <% end %>
 </div>
 </div>

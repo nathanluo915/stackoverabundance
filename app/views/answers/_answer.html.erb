@@ -12,7 +12,23 @@
     <%= answer.user.username %>
   </div>
 
-  <div class="comment-block">
+  <div class="comment-list">
     <%= render answer.comments %>
   </div>
+
+  <div class="comment-form-container">
+      <% if logged_in? %>
+      <a class="add-comment-button" href="#">Add Comment</a>
+        <%= form_for Comment.new, url: "/comments" , html: {style: "display:none;"} do |f|%>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :commentable_id, value: answer.id %>
+          <%= f.hidden_field :commentable_type, value: "Answer" %>
+          <div>
+            <%= f.label :content %>
+            <%= f.text_area :content, rows: 5, cols: 100 %>
+          </div>
+          <%= f.submit("Post Comment") %>
+        <% end %>
+      <% end %>
+    </div>
 </div>

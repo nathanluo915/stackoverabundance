@@ -1,6 +1,6 @@
 <div id="answer-form">
-  <h3>Answer: </h3>
-  <%= form_for [@question, @answer], id: "new-answer-form" do |f|%>
+  <%= form_for [question, answer], id: "new-answer-form", html: {style: "display:none;"} do |f|%>
+    <h3>Answer: </h3>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div>
       <%= f.label :content %>
