@@ -6,11 +6,11 @@ class Comment < ActiveRecord::Base
   has_many    :votes, as: :votable
 
   validates :content, :commentable, :user, presence: true
-  before_save :validate_empty_content
+  validate :empty_content
 
 
   private
-  def validate_empty_content
+  def empty_content
     unless content && content != ""
       errors.add(:content, "Content cannot be empty")
     end

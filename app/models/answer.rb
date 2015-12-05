@@ -6,11 +6,11 @@ class Answer < ActiveRecord::Base
   has_one  :best_answer_for_question, class_name: "Question"
   has_many  :votes, as: :votable
   has_many  :comments, as: :commentable
-  before_save :validate_empty_content
+  validate :empty_content
 
 
   private
-  def validate_empty_content
+  def empty_content
     unless content && content != ""
       errors.add(:content, "Content cannot be empty")
     end
