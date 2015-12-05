@@ -1,1 +1,10 @@
-
+<%= form_for Comment.new, url: "/comments" , html: {style: "display:none;"} do |f|%>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :commentable_id, value: commentable_id %>
+  <%= f.hidden_field :commentable_type, value: commentable_class %>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 5, cols: 100 %>
+  </div>
+  <%= f.submit("Post Comment") %>
+<% end %>

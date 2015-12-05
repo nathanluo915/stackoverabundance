@@ -1,5 +1,4 @@
 <div class="answer-block">
-
   <div class="score-block">
     <%= render partial: 'votes/vote', locals: { votable: answer } %>
   </div>
@@ -9,7 +8,7 @@
   <%= answer.content %>
   </div>
   <div>
-    <%= answer.user.username %>
+    <%= link_to answer.user.username, user_path(answer.user) %>
   </div>
 
   <div class="comment-list">
@@ -17,18 +16,9 @@
   </div>
 
   <div class="comment-form-container">
-      <% if logged_in? %>
-      <a class="add-comment-button" href="#">Add Comment</a>
-        <%= form_for Comment.new, url: "/comments" , html: {style: "display:none;"} do |f|%>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :commentable_id, value: answer.id %>
-          <%= f.hidden_field :commentable_type, value: "Answer" %>
-          <div>
-            <%= f.label :content %>
-            <%= f.text_area :content, rows: 5, cols: 100 %>
-          </div>
-          <%= f.submit("Post Comment") %>
-        <% end %>
-      <% end %>
-    </div>
+    <% if logged_in? %>
+    <a class="add-comment-button" href="#">Add Comment</a>
+    <%= render partial: "comments/form", locals: {commentable_class: "Answer", commentable_id: answer.id} %>
+    <% end %>
+  </div>
 </div>

@@ -6,6 +6,6 @@
 
   <div>
     <h5>Comment: </h5>
-    <%= comment.content %> | <%= comment.user.username %>
+    <%= comment.content %>   <pre></pre><%= link_to comment.user.username, user_path(comment.user) %>
   </div>
 </div>

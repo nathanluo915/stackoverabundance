@@ -8,10 +8,18 @@
   <%= @question.content %>
   </div>
   <div class="question-user">
-  <%= @question.user.username %>
+  <%= link_to @question.user.username, user_path(@question.user) %>
   </div>
-  <div>
 
+  <div class="comment-list">
+    <%= render @question.comments %>
+  </div>
+
+  <div class="comment-form-container">
+    <% if logged_in? %>
+    <a class="add-comment-button" href="#">Add Comment</a>
+    <%= render partial: "comments/form", locals: {commentable_class: "Question", commentable_id: @question.id} %>
+    <% end %>
   </div>
 </div>
 
