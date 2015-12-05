@@ -46,8 +46,8 @@ RSpec.describe UsersController, type: :controller do
       user = FactoryGirl.create(:user)
       old_attr = user.attributes
       expect{
-        put :update, id: user.id, user:{about: "Cool dude"}
-        }.to change{user.reload.about}.from(old_attr['about']).to("Cool dude")
+        put :update, id: user.id, user:{username: user.username, email: user.email, password: user.password, about: "Cool man"}
+        }.to change{user.reload.about}.from(old_attr['about']).to("Cool man")
     end
   end
 
