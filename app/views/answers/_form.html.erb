@@ -1,13 +1,13 @@
 <div id="answer-form">
-  <%= form_for [question, answer], id: "new-answer-form", html: {style: "display:none;"} do |f|%>
-    <h3>Answer: </h3>
+  <h3>Your Answer: </h3>
+  <%= form_for [question, answer], id: "new-answer-form" do |f|%>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div>
       <%= f.label :content %>
       <%= f.text_area :content, rows: 10, cols: 100 %>
     </div>
     <div>
-      <%= f.submit %>
+      <%= f.submit 'Submit Answer', :class => 'small button' %>
     </div>
   <% end %>
 </div>
