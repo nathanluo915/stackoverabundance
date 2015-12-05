@@ -19,4 +19,18 @@ class User < ActiveRecord::Base
   def upvoted?(votable)
     Vote.find_by(votable: votable, user: self).upvote if self.voted_for?(votable)
   end
+
+  def reputation
+    questions_scores + answers_scores + comments_scores
+  end
+
+  def questions_scores
+    self.questions.map{|q| q.total_votes.to_i}.reduce(:+)
+  end
+  def answers_scores
+    self.answers.map{|q| q.total_votes.to_i}.reduce(:+)
+  end
+  def comments_scores
+    self.comments.map{|q| q.total_votes.to_i}.reduce(:+)
+  end
 end
