@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many  :comments
   has_many  :votes
 
+validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
+
   def voted_for?(votable)
     Vote.where(votable: votable, user: self).count > 0
   end
