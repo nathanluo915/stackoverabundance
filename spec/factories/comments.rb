@@ -5,7 +5,7 @@ FactoryGirl.define do
     association :user, factory: :user
   end
 
-  factory :question_comment, class: "Question" do
+  factory :question_comment, class: "Comment" do
     content Faker::Lorem.paragraph
     association :commentable, :factory => :question
     association :user, factory: :user
