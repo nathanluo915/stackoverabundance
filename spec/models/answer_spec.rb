@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Answer" do
+    it "add a new record to database if all parameters are valid" do
+      answer = FactoryGirl.create(:answer)
+      expect(answer.id).to_not eq(nil)
+    end
+  end
+
 end
