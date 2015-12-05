@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation.min.css
  */
 
 .vote-arrow {
@@ -90,12 +91,24 @@
 }
 
 .question-field {
-  border: 1px solid black;
-  margin: 1em;
+
 }
-.answer-list {border: 1px solid black;}
+.answer-list {
+
+}
 .answer-block {
-  border: 1px solid green;
-  margin: 1em;
+  border-top: 1px solid gray;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
 }
-.comment-block {border: 1px solid blue;}
+.comment-block {
+  border-top: 1px solid gray;
+
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+.user-block {background-color: #CCCCCC; height: 7em; clear: both; vertical-align: sub;}
+.answer-content{padding: 1em;}
