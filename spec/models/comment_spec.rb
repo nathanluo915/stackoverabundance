@@ -18,14 +18,8 @@ RSpec.describe Comment, type: :model do
       expect(comment.valid?).to eq(false)
     end
 
-    it "fail if the content is nil" do
-      c = Comment.new(commentable: FactoryGirl.create(:answer), user: FactoryGirl.create(:user))
-      expect(c.valid?).to eq(false)
-    end
-    it "fail if the content is nil" do
-      c = Comment.new(commentable: FactoryGirl.create(:answer), user: FactoryGirl.create(:user), content: "")
-      expect(c.valid?).to eq(false)
-    end
+    it { should_not allow_value(nil).for(:content) }
+    it { should_not allow_value('').for(:content) }
   end
 
   context "association" do
