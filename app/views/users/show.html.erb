@@ -15,8 +15,10 @@
 <div>
 
 <div class = "user-edit-link">
-<% if current_user.id == @user.id %>
-  <%= link_to 'Edit profile', edit_user_path(@user) %>
+<% if current_user %>
+  <% if current_user.id == @user.id %>
+    <%= link_to 'Edit profile', edit_user_path(@user) %>
+  <% end %>
 <% end %>
 </div>
 
