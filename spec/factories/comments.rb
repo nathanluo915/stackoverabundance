@@ -1,13 +1,15 @@
 FactoryGirl.define do
-  factory :answer_comment, class: "Comment" do
-    content Faker::Lorem.paragraph
-    association :commentable, :factory => :answer
-    association :user, factory: :user
-  end
 
-  factory :question_comment, class: "Comment" do
+  factory :comment do
     content Faker::Lorem.paragraph
-    association :commentable, :factory => :question
     association :user, factory: :user
+
+    factory :answer_comment do
+      association :commentable, :factory => :answer
+    end
+
+    factory :question_comment do
+      association :commentable, :factory => :question
+    end
   end
 end

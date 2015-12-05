@@ -1,20 +1,19 @@
 FactoryGirl.define do
-  factory :question_vote, class: "Vote" do
-    association :user, factory: :user
-    association :votable, factory: :question
-    upvote  true
-  end
 
-  factory :answer_vote, class: "Vote" do
-    association :user, factory: :user
-    association :votable, factory: :answer
+  factory :vote do
     upvote  true
-  end
-
-  factory :comment_vote, class: "Vote" do
     association :user, factory: :user
-    association :votable, factory: :comment
-    upvote  true
-  end
 
+    factory :question_vote do
+      association :votable, factory: :question
+    end
+
+    factory :answer_vote do
+      association :votable, factory: :answer
+    end
+
+    factory :comment_vote do
+      association :votable, factory: :comment
+    end
+  end
 end
