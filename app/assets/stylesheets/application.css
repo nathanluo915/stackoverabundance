@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.vote-arrow {
+  width: 3em;
+}
+
 .index-nav-bar {
   padding: .5em;
   border-bottom: 1px solid #cccccc;
