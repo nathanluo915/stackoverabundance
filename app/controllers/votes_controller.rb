@@ -14,7 +14,7 @@ class VotesController < ApplicationController
 
   def update
     @vote = Vote.find(params[:id])
-    @vote.upvote = !@vote.upvote
+    @vote.flip_vote
     if @vote.save
       respond_to do |format|
         format.html { render partial: 'vote', locals: {votable: @vote.votable, vote: @vote}, layout: false }

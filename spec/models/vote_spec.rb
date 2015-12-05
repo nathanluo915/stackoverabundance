@@ -22,7 +22,7 @@ RSpec.describe Vote, type: :model do
     vote2 = Vote.create(user: @user, votable: answer)
     expect(vote2.votable_id).to eq(answer.id)
     expect(vote2.votable_type).to eq("Answer")
-    comment = FactoryGirl.create(:comment, commentable: answer, user: @user)
+    comment = FactoryGirl.create(:answer_comment, commentable: answer, user: @user)
     vote3 = Vote.create(user: @user, votable: comment)
     expect(vote3.votable_id).to eq(comment.id)
     expect(vote3.votable_type).to eq("Comment")

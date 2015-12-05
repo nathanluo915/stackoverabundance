@@ -9,4 +9,7 @@ class Vote < ActiveRecord::Base
     Vote.find_by(user: current_user, votable: votable)
   end
 
+  def flip_vote
+    self.upvote = !self.upvote
+  end
 end
