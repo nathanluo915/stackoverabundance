@@ -4,10 +4,10 @@ class CommentsController < ApplicationController
     if @comment.save
       render partial: @comment
     else
-      @notice = answer.errors.full_messages
-      if commentable_type == "Answer"
+      @notice = @comment.errors.full_messages
+      if params[:comment][:commentable_type] == "Answer"
         @question = Answer.find(params[:comment][:commentable_id]).question
-      else
+      elsif params[:comment][:commentable_type]== "Question"
         @question = Question.find(params[:comment][:commentable_id])
       end
       redirect_to question_path(@question)
