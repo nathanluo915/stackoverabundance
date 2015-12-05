@@ -12,12 +12,12 @@ class AnswersController < ApplicationController
       render partial: answer
     else
       @notice = answer.errors.full_messages
-      render question_path(@queston)
+      redirect_to question_path(@question)
     end
   end
 
   private
   def answer_build_params
-    params.require(:answer).permit(:user_id, :content)
+    params.require(:answer).permit(:content).merge(user_id: current_user.id)
   end
 end
