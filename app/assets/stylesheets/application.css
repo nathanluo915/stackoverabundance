@@ -15,7 +15,19 @@
  *= require bootstrap.min.css
  *= require_self
  */
+
 .debug {border: 1px solid red;}
+
+.form-signup{
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+
+.vote-arrow {
+  width: 3em;
+}
 
 .index-nav-bar {
   padding: .5em;
