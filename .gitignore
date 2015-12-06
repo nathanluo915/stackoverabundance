@@ -16,9 +16,3 @@
 !/log/.keep
 /tmp
 /coverage
-vendor/assets/javascripts/app.js
-vendor/assets/javascripts/foundation.js
-vendor/assets/javascripts/vendor/jquery.min.js
-vendor/assets/javascripts/vendor/what-input.min.js
-vendor/assets/stylesheets/app.css
-vendor/assets/stylesheets/foundation.css
