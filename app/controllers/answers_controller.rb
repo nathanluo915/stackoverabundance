@@ -7,9 +7,9 @@ class AnswersController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
-    answer = @question.answers.build(answer_build_params)
-    if answer.save
-      render partial: answer
+    @answer = @question.answers.build(answer_build_params)
+    if @answer.save
+      render partial: @answer
     else
       @notice = answer.errors.full_messages
       redirect_to question_path(@question)

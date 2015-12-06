@@ -1,45 +1,60 @@
 <div class="row">
-  <div class="question-field">
-    <div class="score-block">
-      <%= render partial: 'votes/vote', locals: { votable: @question } %>
-    </div>
-
-    <div class="">
-      <div>
-        <h3> <%= @question.title %></h3>
-      </div>
-      <div class="question-content">
-      <%= @question.content %>
-      </div>
-      <div class="question-user">
-        <div class="user-name">
-          <%= link_to @question.user.username, user_path(@question.user) %>
-        </div>
-        <div class="reputation">
-          <%= @question.user.reputation %>
-        </div>
-      </div>
-
-      <div class="comment-list">
-        <%= render @question.comments %>
-      </div>
-
-      <div class="comment-form-container">
-        <% if logged_in? %>
-        <a class="add-comment-button" href="#">Add Comment</a>
-        <%= render partial: "comments/form", locals: {commentable_class: "Question", commentable_id: @question.id} %>
-        <% end %>
+  <div class="question-field row">
+    <div class="col-sm-1">
+      <div class="score-block">
+        <%= render partial: 'votes/vote', locals: { votable: @question } %>
       </div>
     </div>
+
+    <div class="col-sm-11">
+      <div class="question-elements-block row">
+        <div class="question-title col-sm-12">
+          <h3 class=""> <%= @question.title %></h3>
+        </div>
+        <div class="question-content col-sm-12">
+        <%= @question.content %>
+        </div>
+        <div class="user-block col-sm-3 col-sm-offset-8">
+          <div class="user-name">
+            <%= link_to @question.user.username, user_path(@question.user) %>
+          </div>
+          <div class="reputation">
+            <%= @question.user.reputation %>
+          </div>
+        </div>
+
+
+        <div class="col-sm-11">
+          <div class="row">
+            <div class="comment-list col-sm-11 col-sm-offset-1">
+              <%= render @question.comments %>
+            </div>
+
+            <div class="comment-form-container col-sm-12">
+              <% if logged_in? %>
+              <a class="add-comment-button" href="#">Add Comment</a>
+              <%= render partial: "comments/form", locals: {commentable_class: "Question", commentable_id: @question.id} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12">
+        <div class="answer-list">
+          <%= render @question.answers %>
+        </div>
+
+        <div class="answer-form">
+          <% if current_user %>
+            <%= render partial: "answers/form", locals: {question: @question, answer: Answer.new} %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="answer-list">
-    <%= render @question.answers %>
-  </div>
-
-  <div class="answer-form">
-    <% if current_user %>
-      <%= render partial: "answers/form", locals: {question: @question, answer: Answer.new} %>
-    <% end %>
-  </div>
 </div>

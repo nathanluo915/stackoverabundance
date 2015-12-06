@@ -1,0 +1,15 @@
+<form class="vote-arrow" method="post" action="/votes/<%= vote.id %>">
+  <% if upvote && voted %>
+    <input type="hidden", name="_method", value="delete">
+    <%= image_submit_tag("upvoted.svg") %>
+  <% elsif upvote %>
+    <input type="hidden", name="_method", value="put">
+    <%= image_submit_tag("upvote.svg") %>
+  <% elsif !upvote && voted %>
+    <input type="hidden", name="_method", value="delete">
+    <%= image_submit_tag("downvoted.svg") %>
+  <% elsif !upvote %>
+    <input type="hidden", name="_method", value="put">
+    <%= image_submit_tag("downvote.svg") %>
+  <% end %>
+</form>

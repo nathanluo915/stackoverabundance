@@ -15,10 +15,7 @@
  *= require bootstrap.min.css
  *= require_self
  */
-
-.vote-arrow {
-  width: 3em;
-}
+.debug {border: 1px solid red;}
 
 .index-nav-bar {
   padding: .5em;
@@ -91,25 +88,57 @@
   background-color: #aaaaaa;
 }
 
+/* Question show page*/
 .question-field {
 
 }
+
+.question-elements-block{
+  margin-top:0;
+  padding-top:0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.question-title h3{
+  margin-top: 0;
+}
+
 .answer-list {
 
 }
 .answer-block {
-  border-top: 1px solid gray;
+  border-bottom: 1px solid #f0f0f0;
   margin-top: 1em;
   margin-bottom: 1em;
   padding: 2em;
 }
-.comment-block {
-  border-top: 1px solid gray;
+.answer-content{
+  padding: 1em;
+}
 
+.comment-list{
+}
+.comment-block {
+  background-color: white;
+  border-bottom: 1px solid #f0f0f0;
   margin-top: 1em;
   margin-bottom: 1em;
   padding: 1em;
 }
 
-.user-block {background-color: #CCCCCC; height: 7em; clear: both; vertical-align: sub;}
-.answer-content{padding: 1em;}
+.user-block {
+  background-color: #CCCCCC;
+  height: 7em;
+  clear: both;
+  vertical-align: sub;
+  margin-top: 2em;
+}
+
+
+/* Vote block */
+.vote-arrow {
+  width: 2em;
+}
+.score-block .row{
+  text-align: center;
+}

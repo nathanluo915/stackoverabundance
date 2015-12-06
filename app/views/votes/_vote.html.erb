@@ -1,17 +1,17 @@
-<% if current_user %>
+<% if current_user && current_user != votable.user%>
   <% if current_user.voted_for?(votable) %>
     <% vote = Vote.your_vote(current_user, votable) %>
     <% if current_user.upvoted?(votable) %>
 
-      <div>
+      <div class="row">
       <%= form_for vote, url: "/votes/#{vote.id}", method: :delete, html:{class: :upvoted} do |f| %>
         <%= image_submit_tag("upvoted.svg", :class => "vote-arrow") %>
       <% end %>
       </div>
-      <div>
+      <div class="row">
         <%= votable.total_votes %>
       </div>
-      <div>
+      <div class="row">
       <%= form_for vote, url: "/votes/#{vote.id}", method: :put, html:{class: :downvote} do |f| %>
         <%= image_submit_tag("downvote.svg", :class => "vote-arrow") %>
       <% end %>
@@ -19,15 +19,15 @@
 
     <% else %>
 
-      <div>
+      <div class="row">
       <%= form_for vote, url: "/votes/#{vote.id}", method: :put, html:{class: :upvote} do |f| %>
         <%= image_submit_tag("upvote.svg", :class => "vote-arrow") %>
       <% end %>
       </div>
-      <div>
+      <div class="row">
         <%= votable.total_votes %>
       </div>
-      <div>
+      <div class="row">
       <%= form_for vote, url: "/votes/#{vote.id}", method: :delete, html:{class: :downvoted} do |f| %>
         <%= image_submit_tag("downvoted.svg", :class => "vote-arrow") %>
       <% end %>
@@ -35,7 +35,7 @@
     <% end %>
 
   <% else %>
-    <div>
+    <div  class="row">
     <%= form_for [votable, Vote.new], html:{class: :upvote} do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :votable_type, value: votable.class %>
@@ -44,10 +44,10 @@
     <%= image_submit_tag("upvote.svg", :class => "vote-arrow") %>
     <% end %>
     </div>
-    <div>
+    <div class="row">
       <%= votable.total_votes %>
     </div>
-    <div>
+    <div class="row">
     <%= form_for [votable, Vote.new], html:{class: :downvote} do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :votable_type, value: votable.class %>
@@ -59,7 +59,7 @@
   <% end %>
 
 <% else %>
-  <div>
+  <div class="row">
     <%= votable.total_votes %>
   </div>
 <% end %>
