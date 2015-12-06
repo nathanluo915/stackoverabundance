@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
   validates :password, length: { in: 6..20 }
-
+  validates :password, presence: true
 
   def voted_for?(votable)
     Vote.where(votable: votable, user: self).count > 0
