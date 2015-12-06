@@ -21,6 +21,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if logged_in? && current_user == @user
+      render :edit
+    else
+      flash[:notice] = "Please log in"
+      redirect_to login_path
+    end
   end
 
   def update
