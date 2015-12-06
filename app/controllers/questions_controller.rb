@@ -33,6 +33,8 @@ class QuestionsController < ApplicationController
   end
 
 
+
+  private
   def strong_params
     params.require(:question).permit(:title,:content)
   end
