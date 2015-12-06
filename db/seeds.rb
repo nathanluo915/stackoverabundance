@@ -38,4 +38,3 @@ questions = Question.all
 users = User.all
 answers = Answer.all
 comments = Comment.all
-
