@@ -6,29 +6,29 @@
   </ul>
 <% end %>
 
-<h1> Sign up for Stack Overabundance! </h1>
+<h1 class = "form-signup"> Sign up! </h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:class => "form-signup"} do |f| %>
 
 <div>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username, :class => "form-control" %>
 </div>
 
 <div>
   <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.email_field :email, :class => "form-control" %>
 </div>
 
 <div>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, :class => "form-control" %>
 </div>
 
 <div>
-  <%= f.submit %>
+  <%= f.submit nil, :class => 'btn btn-lg btn-primary btn-block' %>
 </div>
 
 <% end %>
 
-<p> Already have an account? <%= link_to 'Sign in', login_path %>
+<p class = "form-signup"> Already have an account? <%= link_to 'Sign in', login_path %> </p>

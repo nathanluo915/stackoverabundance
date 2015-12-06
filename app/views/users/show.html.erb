@@ -6,6 +6,10 @@
   <%= link_to 'Github', normalize_url( @user.github ) if !@user.github.blank?%>
 </div>
 
+<div class = "user-reputation">
+  <%= @user.reputation %> reputation
+</div>
+
 <div class = "user-about">
 <% if @user.about.blank?  %>
  <p> This 'about me' is currently blank! <p>
