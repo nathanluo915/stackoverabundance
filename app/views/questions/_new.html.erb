@@ -1,0 +1,9 @@
+<div class="new-question-form-errors"></div>
+<%= form_for @question do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title, class: "question-form-fields-input" %>
+<%= f.label :content %>
+<%= f.text_area :content, class: "question-form-fields-textarea" %>
+<%= f.submit %>
+<%= f.button "Cancel", id: "new-question-form-cancel-btn"%>
+<% end %>

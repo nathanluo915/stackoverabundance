@@ -13,7 +13,7 @@
     <% if logged_in? %>
     <li><%= link_to current_user.username, user_path(current_user.id) %> </li>
     <li><%= link_to 'Logout', logout_path %></li>
-    <li><%= link_to "Ask Question", new_question_path %></li>
+    <li><%= link_to "Ask Question", new_question_path, id: "Ask-question-button" %></li>
     <% else %>
     <li><%= link_to 'Login', login_path %></li>
     <li><%= link_to 'Sign up', signup_path %></li>
@@ -22,6 +22,7 @@
 </span>
 </h1>
 <div class="container">
+<div class="main-form-slidedown"></div>
 <%= yield %>
 </div>
 

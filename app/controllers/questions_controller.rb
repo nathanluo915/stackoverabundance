@@ -21,14 +21,19 @@ class QuestionsController < ApplicationController
   def new
     current_user = User.new(username:"a", email:"a", password:"a")
     @question = current_user.questions.new
+    render partial: 'new', locals: {questions: @questions}
   end
 
   def create
    q = current_user.questions.new(strong_params)
    if q.save
-    redirect_to root_path
+    if request.xhr?
+      render text: "Success"
+    else
+      redirect_to root_path
+    end
    else
-    errors.add("Form not completed properly")
+     render json: q.errors.full_messages
    end
   end
 
