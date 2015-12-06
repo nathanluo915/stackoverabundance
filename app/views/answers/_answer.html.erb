@@ -1,26 +1,30 @@
-<div class="answer-block">
-  <div class="score-block">
-    <%= render partial: 'votes/vote', locals: { votable: answer } %>
+<div class="answer-block row">
+  <div class="col-sm-1">
+    <div class="score-block">
+      <%= render partial: 'votes/vote', locals: { votable: answer } %>
+    </div>
   </div>
-  <div class="">
-    <div>
-      <div class="answer-content">
+  <div class="col-sm-11">
+    <div class="answer-content-block row">
+      <div class="answer-content col-sm-12">
         <%= answer.content %>
       </div>
-      <div class="user-block">
+      <div class="user-block col-sm-3 col-sm-offset-9">
         <%= link_to answer.user.username, user_path(answer.user)%>
       </div>
     </div>
 
-    <div class="comment-list">
-      <%= render answer.comments %>
-    </div>
+    <div class="row">
+      <div class="comment-list">
+        <%= render answer.comments %>
+      </div>
 
-    <div class="comment-form-container">
-      <% if logged_in? %>
-      <a class="add-comment-button" href="#">Add Comment</a>
-      <%= render partial: "comments/form", locals: {commentable_class: "Answer", commentable_id: answer.id} %>
-      <% end %>
+      <div class="comment-form-container">
+        <% if logged_in? %>
+        <a class="add-comment-button" href="#">Add Comment</a>
+        <%= render partial: "comments/form", locals: {commentable_class: "Answer", commentable_id: answer.id} %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

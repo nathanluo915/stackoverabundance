@@ -36,8 +36,8 @@ $(document).ready(function(){
       data: element.serialize()
     }).done(function(response){
       $(".answer-list").append(response);
-      $(".add-comment-button").on("click", bindAddComment);
-      $(".comment-form-container").on("submit", "form", bindCommentSubmit);
+      $(".answer-list").children().last().find(".add-comment-button").on("click", bindAddComment);
+      $(".answer-list").children().last().find(".comment-form-container").on("submit", "form", bindCommentSubmit);
       element.find("textarea").val("");
     }).fail(function(error){
       console.log(error);
