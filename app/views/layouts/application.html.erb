@@ -21,6 +21,14 @@
   </ul>
 </span>
 </h1>
+
+<% flash.each do |type, message| %>
+  <div class="alert <%= bootstrap_class_for(type) %>">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= message %>
+  </div>
+<% end %>
+
 <div class="container">
 <div class="main-form-slidedown"></div>
 <%= yield %>

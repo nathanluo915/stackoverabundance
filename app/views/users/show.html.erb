@@ -1,6 +1,6 @@
 <h1> <%= @user.username %> </h1>
 
-<div class = "user-links">
+<div class = "list-group">
   <%= link_to 'Website', normalize_url( @user.website ) if !@user.website.blank?%>
   <%= link_to 'Twitter', normalize_url( @user.twitter ) if !@user.twitter.blank?%>
   <%= link_to 'Github', normalize_url( @user.github ) if !@user.github.blank?%>
