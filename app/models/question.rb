@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
 
   belongs_to  :user
   has_many    :answers
-  belongs_to  :best_answer, class_name:  "Answer"
+  belongs_to  :best_answer, class_name: "Answer", foreign_key: :answer_id
   has_many    :votes, as: :votable
   has_many    :comments, as: :commentable
 

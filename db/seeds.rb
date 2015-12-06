@@ -17,7 +17,7 @@ end
 puts
 puts "Creating Content"
 
-30.times do
+10.times do
   print '.'
   q = Question.create!(title: Faker::Lorem.sentence.sub(/\./, "?"), content: Faker::Lorem.paragraph, user: users.sample)
   Random.rand(3).times do
@@ -33,8 +33,8 @@ puts "Creating Content"
   puts
 end
 
-
-questions = Question.all
 users = User.all
-answers = Answer.all
-comments = Comment.all
+all_votable = Question.all.merge(Answer.all).merge(Comment.all)
+500.times do
+  Vote.create(user: users.sample, votable: all_votable.sample, upvote: [true, false].sample)
+end
