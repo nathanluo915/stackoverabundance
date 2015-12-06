@@ -21,16 +21,17 @@ class User < ActiveRecord::Base
   end
 
   def reputation
-    questions_scores + answers_scores + comments_scores
+
+    self.questions_scores + self.answers_scores + self.comments_scores
   end
 
   def questions_scores
-    self.questions.map{|q| q.total_votes.to_i}.reduce(:+)
+    self.questions.map{|q| q.total_votes.to_i}.reduce(:+) || 0
   end
   def answers_scores
-    self.answers.map{|q| q.total_votes.to_i}.reduce(:+)
+    self.answers.map{|q| q.total_votes.to_i}.reduce(:+) || 0
   end
   def comments_scores
-    self.comments.map{|q| q.total_votes.to_i}.reduce(:+)
+    self.comments.map{|q| q.total_votes.to_i}.reduce(:+) || 0
   end
 end
