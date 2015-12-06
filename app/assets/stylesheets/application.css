@@ -18,12 +18,11 @@
 
 .debug {border: 1px solid red;}
 
-
- .form-signup{
+.form-signup{
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
- }
+}
 
 .vote-arrow {
   width: 3em;
