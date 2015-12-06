@@ -29,6 +29,13 @@
   width: 3em;
 }
 
+.main-form-slidedown {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 1em;
+  background-color: #dcccff;
+}
+
 .index-nav-bar {
   padding: .5em;
   border-bottom: 1px solid #cccccc;
@@ -98,6 +105,35 @@
   font-weight: 200;
   padding: .4em;
   background-color: #aaaaaa;
+}
+
+.question-form-fields-input {
+  width: 60em;
+  display: block;
+  -webkit-box-shadow: inset 2px 2px 4px 0px #dddddd, -2px -2px 4px 0px #dddddd;
+  -mox-box-shadow: inset 2px 2px 4px 0px #dddddd, -2px -2px 4px 0px #dddddd;
+  box-shadow: inset 2px 2px 4px 0px #dddddd, -2px -2px 4px 0px #dddddd;
+}
+
+.question-form-fields-textarea {
+  -webkit-box-shadow: inset 2px 2px 4px 0px #dddddd, -2px -2px 4px 0px #dddddd;
+  -mox-box-shadow: inset 2px 2px 4px 0px #dddddd, -2px -2px 4px 0px #dddddd;
+  box-shadow: inset 2px 2px 4px 0px #dddddd, -2px -2px 4px 0px #dddddd;
+  width: 60em;
+  display: block;
+  height: 10em;
+
+}
+
+h1.main-header {
+  background-color: whitesmoke;
+  margin: 0px;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+}
+
+a.title {
+  color: #3300bb;
 }
 
 /* Question show page*/
