@@ -1,5 +1,5 @@
 <h1> Edit your profile </h1>
-
+<% if logged_in? && current_user.id == @user.id %>
 <%= form_for @user do |f| %>
 
 <div>
@@ -42,9 +42,10 @@
 </div>
 
 <% end %>
+<% end %>
 
 <div class = "user-delete-buttion">
-<% if current_user.id == @user.id %>
+<% if logged_in? && current_user.id == @user.id %>
   <%= form_for @user, method: :delete do |f| %>
   <%= f.submit 'Delete account' %>
   <% end %>
