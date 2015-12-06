@@ -1,22 +1,22 @@
-<div class="answer-block row">
-  <div class="score-block large-1 columns">
+<div class="answer-block">
+  <div class="score-block">
     <%= render partial: 'votes/vote', locals: { votable: answer } %>
   </div>
-  <div class="large-11 columns">
+  <div class="">
     <div>
-      <div class="large-12 columns answer-content">
+      <div class="answer-content">
         <%= answer.content %>
       </div>
-      <div class="large-3 columns user-block">
+      <div class="user-block">
         <%= link_to answer.user.username, user_path(answer.user)%>
       </div>
     </div>
 
-    <div class="comment-list large-12 columns">
+    <div class="comment-list">
       <%= render answer.comments %>
     </div>
 
-    <div class="comment-form-container large-12 columns">
+    <div class="comment-form-container">
       <% if logged_in? %>
       <a class="add-comment-button" href="#">Add Comment</a>
       <%= render partial: "comments/form", locals: {commentable_class: "Answer", commentable_id: answer.id} %>

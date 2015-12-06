@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="question-field large-12 columns">
-    <div class="score-block large-1 columns">
+  <div class="question-field">
+    <div class="score-block">
       <%= render partial: 'votes/vote', locals: { votable: @question } %>
     </div>
 
-    <div class="large-11 columns">
+    <div class="">
       <div>
         <h3> <%= @question.title %></h3>
       </div>
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="answer-list large-12 columns">
+  <div class="answer-list">
     <%= render @question.answers %>
   </div>
 
