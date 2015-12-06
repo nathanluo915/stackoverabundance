@@ -19,7 +19,6 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    current_user = User.new(username:"a", email:"a", password:"a")
     @question = current_user.questions.new
     render partial: 'new', locals: {questions: @questions}
   end

@@ -107,8 +107,6 @@
   background-color: #aaaaaa;
 }
 
-
-/* Question show page*/
 .question-form-fields-input {
   width: 60em;
   display: block;
@@ -127,7 +125,18 @@
 
 }
 
+h1.main-header {
+  background-color: whitesmoke;
+  margin: 0px;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+}
 
+a.title {
+  color: #3300bb;
+}
+
+/* Question show page*/
 .question-field {
 
 }
