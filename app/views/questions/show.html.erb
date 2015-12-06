@@ -12,7 +12,12 @@
       <%= @question.content %>
       </div>
       <div class="question-user">
-      <%= link_to @question.user.username, user_path(@question.user) %>
+        <div class="user-name">
+          <%= link_to @question.user.username, user_path(@question.user) %>
+        </div>
+        <div class="reputation">
+          <%= @question.user.reputation %>
+        </div>
       </div>
 
       <div class="comment-list">

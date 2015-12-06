@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   private
   def empty_content
     unless content && content != ""
-      errors.add(:content, "Content cannot be empty")
+      errors.add(:content, "cannot be empty")
     end
   end
 end
