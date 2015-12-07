@@ -35,10 +35,13 @@
   <% @user.questions.each do |question| %>
   <div class = "user-questions">
     <%= link_to question.title, question_path(question.id) %> |
-    <%= question.created_at.strftime("%B %d, %Y") %>
+    <%= question.created_at.strftime("%B %d, %Y") %> <br>
+    <% if question.best_answer %>
+     Best answer selected: 
+      <%= question.best_answer.content %>
+    <% end %>
   </div>
   <% end %>
-
 
 <h3> Answers </h3>
   <% @user.answers.each do |answer| %>

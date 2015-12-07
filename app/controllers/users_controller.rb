@@ -34,7 +34,6 @@ class UsersController < ApplicationController
     if @user.update_attributes(update_params)
       redirect_to user_path(@user), success: "Profile updated"
     else
-      @user = @user.errors.full_messages
       redirect_to edit_user_path(@user)
     end
   end
