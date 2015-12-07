@@ -9,6 +9,7 @@
 <body>
 <h1 class="main-header"><%=link_to "StackOverabundance", root_path, class: "title"%>
   <span class="main-nav-bar">
+  <div id="nav-height" class="text-right">
   <ul>
     <% if logged_in? %>
     <li><%= link_to current_user.username, user_path(current_user.id) %> </li>
@@ -19,6 +20,7 @@
     <li><%= link_to 'Sign up', signup_path %></li>
     <% end %>
   </ul>
+  </div>
 </span>
 </h1>
 
@@ -34,7 +36,9 @@
 <%= yield %>
 </div>
 
-
+  <footer>
+    <p class="indent">Stack Overabundance is a Stack Overflow clone developed by Laura Evans, Ian Lockwood, Nathan Luo, and Salim Rahimi at Dev Bootcamp in New York City.</p>
+  </footer>
 
 </body>
 </html>

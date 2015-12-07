@@ -1,3 +1,4 @@
+<div class="margin-container">
 <div class="row">
   <div class="question-field row">
     <div class="col-sm-1">
@@ -16,6 +17,7 @@
         </div>
         <div class="user-block col-sm-3 col-sm-offset-8">
           <div class="user-name">
+            <p>Asked <%= @question.get_modified_time %></p>
             <%= link_to @question.user.username, user_path(@question.user) %>
           </div>
           <div class="reputation">
@@ -59,4 +61,5 @@
 
   </div>
 
+</div>
 </div>
