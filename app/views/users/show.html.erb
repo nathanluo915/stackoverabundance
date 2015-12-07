@@ -1,22 +1,4 @@
-<h1> <%= @user.username %> </h1>
-
-<div class = "user-links">
-  <%= link_to 'Website', normalize_url( @user.website ) if !@user.website.blank?%>
-  <%= link_to 'Twitter', normalize_url( @user.twitter ) if !@user.twitter.blank?%>
-  <%= link_to 'Github', normalize_url( @user.github ) if !@user.github.blank?%>
-</div>
-
-<div class = "user-reputation">
-  <%= @user.reputation %> reputation
-</div>
-
-<div class = "user-about">
-<% if @user.about.blank?  %>
- <p> This 'about me' is currently blank! <p>
-<% else %>
-  <p> <%= @user.about %>
-<% end %>
-<div>
+<h1> <%= @user.username.upcase %> </h1>
 
 <div class = "user-edit-link">
 <% if current_user %>
@@ -26,6 +8,28 @@
 <% end %>
 </div>
 
+<div class = "user-links">
+    <h4 class = "user-posts"> <%= @user.questions.count %> questions </h4> 
+    <h4 class = "user-posts"> <%= @user.answers.count %> answers </h4>
+    <h4 class = "user-posts"> <%= @user.comments.count %> comments </h4>
+    <h4> Member since <%= @user.created_at.strftime("%B %d, %Y") %> </h4>
+    <h4><div class = "user-reputation">
+      <%= @user.reputation %> reputation
+    </div></h4>
+  <div class = "list-group">
+    <% if !@user.website.blank? %><%= link_to 'Website', normalize_url( @user.website ), :class => "list-group-item active" %><% end %>
+    <% if !@user.twitter.blank? %><%= link_to 'Twitter', normalize_url( @user.twitter ), :class => "list-group-item active" %><% end %>
+    <% if !@user.github.blank? %> <%= link_to 'Github', normalize_url( @user.github ), :class => "list-group-item active" %> <% end %>
+  </div>
+</div>
+
+<div class = "user-about">
+<% if @user.about.blank?  %>
+ <h4> Apparently, this user prefers to keep an air of mystery about them.</h4>
+<% else %>
+  <h4> <%= @user.about %> </h4>
+<% end %>
+<div>
 
 <h3> Questions </h3>
   <% @user.questions.each do |question| %>
@@ -39,7 +43,12 @@
 <h3> Answers </h3>
   <% @user.answers.each do |answer| %>
   <div class = "user-answers">
+    <h5> Answer to '<%= answer.question.title %>': </h5>
+    <% if answer.content.length > 30 %>
     <%= truncate(answer.content, :length => 30, separator: ' '){ link_to "Continue", question_path(answer.question.id)} %> |
+    <% else %>
+    <%= answer.content %>...<%= link_to "Continue", question_path(answer.question.id)%> |
+    <% end %>
     <%= answer.created_at.strftime("%B %d, %Y") %>
   <div>
   <% end %>

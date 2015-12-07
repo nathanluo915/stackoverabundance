@@ -1,6 +1,22 @@
+
+
+
 <h1> Edit your profile </h1>
 <% if logged_in? && current_user.id == @user.id %>
 <%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div>
   <%= f.label :username %>
@@ -13,7 +29,7 @@
 </div>
 
 <div>
-  <%= f.label :password %>
+  <%= f.label :password, "Password (*required)" %>
   <%= f.password_field :password, :class => "form-control" %>
 </div>
 
@@ -23,7 +39,7 @@
 </div>
 
 <div>
-  <%= f.label :webiste %>
+  <%= f.label :website %>
   <%= f.text_field :website, :class => "form-control" %>
 </div>
 
@@ -38,7 +54,7 @@
 </div>
 
 <div>
-  <%= f.submit %>
+  <%= f.submit nil, :class => 'btn btn-lg btn-primary btn-block' %>
 </div>
 
 <% end %>
@@ -47,7 +63,7 @@
 <div class = "user-delete-buttion">
 <% if logged_in? && current_user.id == @user.id %>
   <%= form_for @user, method: :delete do |f| %>
-  <%= f.submit 'Delete account' %>
+  <%= f.submit 'Delete account', :class => 'btn btn-lg btn-primary btn-block'  %>
   <% end %>
 <% end %>
 </div>
