@@ -1,7 +1,7 @@
 <% if answer == answer.question.best_answer %>
   <%= image_tag("checkmark.png", id: "best-answer-check", "answer-id"=>answer.id) %>
 <% else %>
-  <% if logged_in?  %>
+  <% if logged_in? && answer.question.user == current_user %>
       <%= render partial: "questions/empty_check_mark", locals: {answer: answer} %>
   <% end %>
 <% end %>

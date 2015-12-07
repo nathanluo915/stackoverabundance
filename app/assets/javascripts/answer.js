@@ -42,17 +42,20 @@ $(document).ready(function(){
       url: element.attr("action"),
       data: element.serialize()
     }).done(function(response){
-
-      $.ajax({
-        method: 'get',
-        url: 'empty-check-mark',
-        data: $.param({"answer-id": $("#best-answer-check").attr("answer-id")})
-      }).done(function(innerResponse){
-        $("#best-answer-check").parent().html(innerResponse);
+      if ($("#best-answer-check").length > 0){
+        $.ajax({
+          method: 'get',
+          url: 'empty-check-mark',
+          data: $.param({"answer-id": $("#best-answer-check").attr("answer-id")})
+        }).done(function(innerResponse){
+          $("#best-answer-check").parent().html(innerResponse);
+          element.parent().html(response);
+        }).fail(function(error){
+          console.log(error);
+        });
+      }else{
         element.parent().html(response);
-      }).fail(function(error){
-        console.log(error);
-      });
+      }
 
     }).fail(function(error){
       console.log(error);
