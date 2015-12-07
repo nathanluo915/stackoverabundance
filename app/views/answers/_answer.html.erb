@@ -3,8 +3,8 @@
     <div class="score-block">
       <%= render partial: 'votes/vote', locals: { votable: answer } %>
     </div>
-    <div>
-
+    <div class="best-answer-check">
+      <%= render partial: "questions/best_answer_form", locals: {answer: answer} %>
     </div>
   </div>
 

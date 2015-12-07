@@ -32,7 +32,21 @@ class QuestionsController < ApplicationController
    end
   end
 
+  def update
+    @question = Question.find(params[:id])
+    @question.best_answer = Answer.find(params[:question][:answer_id])
+    if @question.save
+      render partial: "best_answer_form", locals: {answer: @question.best_answer}
+    else
+      flash[:notice] = "Answer does not exist"
+      render @question
+    end
+  end
 
+  def empty_check_mark
+    answer = Answer.find(params["answer-id"].to_i)
+    render partial: "empty_check_mark", locals: {answer: answer}
+  end
 
   private
   def strong_params

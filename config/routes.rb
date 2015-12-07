@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
+  get 'questions/empty-check-mark' => 'questions#empty_check_mark'
   resource :sessions, only: [:create]
   resources :users, only: [:create,:show,:edit,:update,:destroy]
 
@@ -14,14 +15,13 @@ Rails.application.routes.draw do
     resources :answers, only:[:create, :new]
   end
   resources :comments, only:[:create]
-
+  patch 'questions/:id' => 'questions#update'
   post 'questions/:id/votes' => 'votes#create', as: :question_votes
   post 'answers/:id/votes' => 'votes#create', as: :answer_votes
   post 'comments/:id/votes' => 'votes#create', as: :comment_votes
 
   put 'votes/:id' => 'votes#update'
   delete 'votes/:id' => 'votes#destroy'
-
   # resources :votes
   root "questions#index"
   # The priority is based upon order of creation: first created -> highest priority.

@@ -34,6 +34,33 @@ $(document).ready(function(){
     element.parent().parent().parent().find(".add-comment-button").toggle();
   }
 
+  var bindCheckMark = function(event){
+    event.preventDefault();
+    var element = $(event.target);
+    $.ajax({
+      method: "post",
+      url: element.attr("action"),
+      data: element.serialize()
+    }).done(function(response){
+
+      $.ajax({
+        method: 'get',
+        url: 'empty-check-mark',
+        data: $.param({"answer-id": $("#best-answer-check").attr("answer-id")})
+      }).done(function(innerResponse){
+        $("#best-answer-check").parent().html(innerResponse);
+        element.parent().html(response);
+      }).fail(function(error){
+        console.log(error);
+      });
+
+    }).fail(function(error){
+      console.log(error);
+    });
+  }
+
+  $(".best-answer-check").on("submit", bindCheckMark);
+
   $(".answer-form").on("submit", "form", function(event){
     event.preventDefault();
     var element = $(event.target);
@@ -46,6 +73,7 @@ $(document).ready(function(){
       $(".answer-list").children().last().find(".add-comment-button").on("click", bindAddComment);
       $(".answer-list").children().last().find(".comment-form-container").on("submit", "form", bindCommentSubmit);
       $(".answer-list").children().last().find(".cancel").on("click", bindCancelButton);
+      $(".answer-list").children().last().find(".best-answer-check").on("submit", bindCheckMark);
       element.find("textarea").val("");
     }).fail(function(error){
       console.log(error);
