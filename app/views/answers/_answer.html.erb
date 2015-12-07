@@ -3,8 +3,13 @@
     <div class="score-block">
       <%= render partial: 'votes/vote', locals: { votable: answer } %>
     </div>
+    <div class="best-answer-check">
+      <%= render partial: "questions/best_answer_form", locals: {answer: answer} %>
+    </div>
   </div>
+
   <div class="col-sm-11">
+
     <div class="answer-content-block row">
       <div class="answer-content col-sm-12">
         <%= answer.content %>
@@ -15,10 +20,10 @@
     </div>
 
     <div class="row">
+      <h4>Comments</h4>
       <div class="comment-list">
         <%= render answer.comments %>
       </div>
-
       <div class="comment-form-container">
         <% if logged_in? %>
         <a class="add-comment-button" href="#">Add Comment</a>
@@ -26,5 +31,7 @@
         <% end %>
       </div>
     </div>
+
   </div>
+
 </div>
