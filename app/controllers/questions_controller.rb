@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     elsif params[:selection] == "2"
       @questions = Question.get_questions_by_highest_voted
     else
-      @questions = Question.get_questions_by_highest_voted
+      @questions = Question.get_questions_by_trending
     end
     render partial: 'questions', locals:{questions: @questions}
   end

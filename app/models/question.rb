@@ -19,7 +19,8 @@ def self.get_questions_by_highest_voted
 end
 
 def self.get_questions_by_trending
-  Vote.all.where("updated_at > ? AND votable_type = ?", 5.hours.ago, "Question").group("votable_id, id")
+  #Vote.all.where("updated_at > ? AND votable_type = ?", 5.hours.ago, "Question").group("votable_id, id")
+  Question.all.each.sort {|x| x.votes.where("created_at < ?", 5.hours.ago).count}
 end
 
 def get_answers_count
