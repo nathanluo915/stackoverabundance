@@ -16,6 +16,16 @@
  *= require_self
  */
 
+ .user-links{
+  float: right;
+  background-color: #f5f5f5;
+  }
+
+  .user-posts{
+    display: inline-block;
+    margin-right: 15px;
+  }
+
 .debug {border: 1px solid red;}
 
 .form-signup{
