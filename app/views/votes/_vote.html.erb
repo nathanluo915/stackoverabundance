@@ -1,7 +1,10 @@
-<% if current_user && current_user != votable.user%>
+<!-- Maybe in voting have def valid_vote?(user) and call that here -->
+<% if current_user && current_user != votable.user %>
+
   <% if current_user.voted_for?(votable) %>
     <% vote = Vote.your_vote(current_user, votable) %>
     <% if current_user.upvoted?(votable) %>
+      <!-- Think about pulling this out into a partial -->
 
       <div class="row">
       <%= form_for vote, url: "/votes/#{vote.id}", method: :delete, html:{class: :upvoted} do |f| %>

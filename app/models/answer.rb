@@ -7,8 +7,12 @@ class Answer < ActiveRecord::Base
   has_many  :comments, as: :commentable
 
   validates :user, :question, presence: true
+  # This validation is badly named. You should validate is_good rather than is_bad
   validate :empty_content
 
+  # DRY this in some shared module
+  # Also, this formatting is probably view only 
+  # so just make it a view helper
   def get_modified_time
     time = (Time.now - self.created_at)
     if time/3600 >= 1
@@ -21,6 +25,7 @@ class Answer < ActiveRecord::Base
 end
 
   private
+  # unnecessary? validates_presence_of should do this?
   def empty_content
     unless content && content != ""
       errors.add(:content, "cannot be empty")
