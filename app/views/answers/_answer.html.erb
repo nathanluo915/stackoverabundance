@@ -15,7 +15,11 @@
         <%= answer.content %>
       </div>
       <div class="user-block col-sm-3 col-sm-offset-9">
+        <p>Answered <%= answer.get_modified_time %></p>
         <%= link_to answer.user.username, user_path(answer.user)%>
+          <div class="reputation">
+            <%= @question.user.reputation %>
+          </div>
       </div>
     </div>
 

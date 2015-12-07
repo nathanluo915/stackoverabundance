@@ -9,7 +9,7 @@
 </div>
 
 <div class = "user-links">
-    <h4 class = "user-posts"> <%= @user.questions.count %> questions </h4> 
+    <h4 class = "user-posts"> <%= @user.questions.count %> questions </h4>
     <h4 class = "user-posts"> <%= @user.answers.count %> answers </h4>
     <h4 class = "user-posts"> <%= @user.comments.count %> comments </h4>
     <h4> Member since <%= @user.created_at.strftime("%B %d, %Y") %> </h4>
@@ -23,13 +23,13 @@
   </div>
 </div>
 
-<div class = "user-about">
+<div class="user-about">
 <% if @user.about.blank?  %>
  <h4> Apparently, this user prefers to keep an air of mystery about them.</h4>
 <% else %>
   <h4> <%= @user.about %> </h4>
 <% end %>
-<div>
+</div>
 
 <h3> Questions </h3>
   <% @user.questions.each do |question| %>
@@ -37,7 +37,7 @@
     <%= link_to question.title, question_path(question.id) %> |
     <%= question.created_at.strftime("%B %d, %Y") %> <br>
     <% if question.best_answer %>
-     Best answer selected: 
+     Best answer selected:
       <%= question.best_answer.content %>
     <% end %>
   </div>
@@ -53,7 +53,7 @@
     <%= answer.content %>...<%= link_to "Continue", question_path(answer.question.id)%> |
     <% end %>
     <%= answer.created_at.strftime("%B %d, %Y") %>
-  <div>
+  </div>
   <% end %>
 
 <h3> Comments </h3>
@@ -61,7 +61,7 @@
   <div class = "user-comments">
     <%= comment.content %> |
     <%= comment.created_at.strftime("%B %d, %Y") %>
-  <div>
+  </div>
   <% end %>
 
 
