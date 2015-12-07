@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render partial: @comment
     else
+      #If ajax trigger a fail
       @notice = @comment.errors.full_messages
       if params[:comment][:commentable_type] == "Answer"
         @question = Answer.find(params[:comment][:commentable_id]).question

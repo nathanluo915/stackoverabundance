@@ -3,10 +3,8 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(permit_params)
     if @vote.save
-      respond_to do |format|
-        format.html { render partial: 'vote', locals: {votable: @vote.votable}, layout: false }
-        format.js { }
-      end
+      # You don't need respond_to if you know you are only sending back one format
+      render partial: 'vote', locals: {votable: @vote.votable}, layout: false
     else
       render text: "You've already voted"
     end

@@ -11,7 +11,9 @@ class AnswersController < ApplicationController
     if @answer.save
       render partial: @answer
     else
-      @notice = answer.errors.full_messages
+      #This looks like an ajax only method? Redirect won't do anthing.
+      # You should return a 422 error code on failure so that your ajax.fail handler fires
+      @notice = @answer.errors.full_messages
       redirect_to question_path(@question)
     end
   end
